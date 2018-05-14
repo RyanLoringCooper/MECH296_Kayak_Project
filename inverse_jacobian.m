@@ -23,9 +23,9 @@ Vc = [ ClusterStateSpaceVector(25); % xc_dot
        ClusterStateSpaceVector(4);  % p_dot
        ClusterStateSpaceVector(5);  % beta_dot
        ClusterStateSpaceVector(6);  % q_dot
-       phi1_dot; %TODO              % phi1_dot
-       phi2_dot; %TODO              % phi2_dot
-       phi3_dot]; %TODO             % phi3_dot
+       ClusterStateSpaceVector(22); % phi1_dot
+       ClusterStateSpaceVector(23); % phi2_dot
+       ClusterStateSpaceVector(24)];% phi3_dot
 Vr = inv_Jac*Vc;
 end
 
