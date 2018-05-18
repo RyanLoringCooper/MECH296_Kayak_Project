@@ -22,7 +22,7 @@ denom = (norm(v1)*norm(v2));
 if denom == 0
     denom = 1;
 end
-beta = acos(dot(v1,v2)/denom);
+beta = real(acos(complex(dot(v1,v2)/denom)));
 
 xc = (x1+x2+x3)/3;
 yc = (y1+y2+y3)/3;
