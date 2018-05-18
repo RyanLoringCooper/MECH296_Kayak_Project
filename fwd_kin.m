@@ -18,11 +18,21 @@ q = sqrt((x1-x3)^2 + (y1-y3)^2);
 v1 = [x2-x1, y2-y1];
 v2 = [x3-x1, y3-y1];
 
+denom = 0;
 denom = (norm(v1)*norm(v2));
 if denom == 0
     denom = 1;
 end
-beta = real(acos(complex(dot(v1,v2)/denom)));
+dotProd = 0;
+dotProd = dot(v1,v2);
+division = 0;
+division = double(dotProd/denom)
+beta = 0;
+if abs(division-1) < .001
+    beta = 0;
+else
+    beta = acos(division)
+end
 
 xc = (x1+x2+x3)/3;
 yc = (y1+y2+y3)/3;
