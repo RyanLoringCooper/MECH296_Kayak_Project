@@ -33,16 +33,21 @@ if abs(division-1) < .001
 else
     beta = acos(division)
 end
-
-xc = (x1+x2+x3)/3;
-yc = (y1+y2+y3)/3;
-
-theta_c = atan2((y1-yc),(x1-xc));
-
+xc = 0;
+yc = 0;
+theta_c = 0;
+if nearBetaSingularity(beta)
+    xc = x1;
+    yc = y1;
+    theta_c = atan2(y3-y1, x3-x1)-pi/2;
+else
+    xc = (x1+x2+x3)/3;
+    yc = (y1+y2+y3)/3;
+    theta_c = atan2((y1-yc),(x1-xc));
+end
 phi1 = theta1 - theta_c;
 phi2 = theta2 - theta_c;
 phi3 = theta3 - theta_c;
-
 out = [xc; yc; theta_c; p; q; beta; phi1; phi2; phi3];
 
 end
