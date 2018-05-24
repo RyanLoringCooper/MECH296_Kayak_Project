@@ -16,7 +16,8 @@ function g1_unit = sourceTrenchFollower(r1_pos, r2_pos, r3_pos, sensorResponses)
     centringContribution = RclustToGlob*centeringContributionCluster;
         
     rotatingContribution = zeros(2,1);
-    % TODO rotating contribution from fastestFlowFinder
+    totalRes = vectorResponse(1,:)+vectorResponse(2,:)+vectorResponse(3,:);
+    rotatingContribution = totalRes/norm(totalRes);
     
     R1 = [r1_pos(1); r1_pos(2); vectorMagnitudes(1)];
     R2 = [r2_pos(1); r2_pos(2); vectorMagnitudes(2)];
