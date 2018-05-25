@@ -7,7 +7,7 @@ function g1_unit = sourceTrenchFollower(r1_pos, r2_pos, r3_pos, sensorResponses)
     centeringContributionCluster = zeros(3,1);
     %TODO this may have special cases for robot positions relative to the trench
     centeringContributionCluster = [0; vectorMagnitudes(2)-vectorMagnitudes(3); 0];
-    if centeringContributionCluster ~= zeros(3,1)
+    if abs(centeringContributionCluster(2)) > 1 
         centeringContributionCluster = centeringContributionCluster/norm(centeringContributionCluster);
     end
     RclustToGlob = [cos(clusterVars(3)), -sin(clusterVars(3)), 0;
