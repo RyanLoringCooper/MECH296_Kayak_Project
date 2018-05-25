@@ -26,7 +26,17 @@ function g1_unit = sourceTrenchFollower(r1_pos, r2_pos, r3_pos, sensorResponses)
     R3 = [r3_pos(1); r3_pos(2); vectorMagnitudes(3)];
     %Gradient calc for gradient descent
     grad = grad_calc(R1, R2, R3);
-    
+    grad = grad/norm(grad);
+    %% turn off other contributions if the rotation contribution is in the opposite direction of the cluster
+    % vector representing the way the cluster is facing
+    clusterVec = r2_pos-r3_pos;
+    % rotate clusterVec by 90 degrees to get orthoVec=[0,-1;1,0]clusterVec
+    % this is the direction that the cluster is facing
+    orthoVec = [-clusterVec(2); clusterVec(1)];
+    if abs(angleBetween(rotatingContribution, orthoVec)) > pi/6
+        centeringContribution = zeros(3,1);
+        grad = zeros(3,1);
+    end
     g1 = grad+centeringContribution+rotatingContribution;
-    g1_unit = g1/norm(g1)
+    g1_unit = g1/norm(g1);
 end
