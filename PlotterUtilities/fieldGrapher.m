@@ -10,7 +10,15 @@ function fieldGrapher(minX, maxX, minY, maxY, fieldGenerator, displayNormalized,
             v(i, j) = dirt(2);
         end
     end
+    figure1 = figure;
+    quiver(x, y, zeros(size(v)), v);
+    title('Vertical Vector Component')
+    figure2 = figure;
+    quiver(x, y, u, zeros(size(u)));
+    title('Horizontal Vector Component')
+    figure3 = figure;
     quiver(x, y, u, v);
+    title('vector field')
 end
 
 function retval = xField(minX, maxX, minY, maxY)

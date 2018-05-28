@@ -28,7 +28,6 @@ y = ymin-res:res:ymax+res;
 field_shift = [0 0 0 0];
 fieldGrapher(xmin-res, xmax+res, ymin-res, ymax+res, fieldGenerator, true, plotRes);
 
-
 v = [-100:5:100];
 
 %figure;
