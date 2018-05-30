@@ -1,4 +1,4 @@
-function g1_unit = contourFollower(r1_pos, r2_pos, r3_pos, sensorResponses)
+function [g1_unit, thetac] = contourFollower(r1_pos, r2_pos, r3_pos, sensorResponses, thetac)
     vectorMagnitudes = [getMagnitude(sensorResponses(1,:)), getMagnitude(sensorResponses(2,:)), getMagnitude(sensorResponses(3,:))];
     
     R1 = [r1_pos(1); r1_pos(2); vectorMagnitudes(1)];

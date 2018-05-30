@@ -1,4 +1,4 @@
-function g1_unit = sourceTrenchFollower(r1_pos, r2_pos, r3_pos, sensorResponses)
+function [g1_unit, thetac] = sourceTrenchFollower(r1_pos, r2_pos, r3_pos, sensorResponses, thetac)
     clusterVars = fwd_kin([r1_pos; r2_pos; r3_pos]);
     vectorMagnitudes = [getMagnitude(sensorResponses(1,:)), getMagnitude(sensorResponses(2,:)), getMagnitude(sensorResponses(3,:))];
     
