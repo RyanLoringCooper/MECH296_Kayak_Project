@@ -1,4 +1,5 @@
-function [g1_unit, thetac] = maxResponseFinder1(r1_pos, r2_pos, r3_pos, sensorResponses, thetac)
+function [g1_unit, thetac, useG1AsGlobalVel] = maxResponseFinder1(r1_pos, r2_pos, r3_pos, sensorResponses, thetac)
+    useG1AsGlobalVel = 0; %false
     vectorMagnitudes = [getMagnitude(sensorResponses(1,:)), getMagnitude(sensorResponses(2,:)), getMagnitude(sensorResponses(3,:))];
     
     R1 = [r1_pos(1); r1_pos(2); vectorMagnitudes(1)];
