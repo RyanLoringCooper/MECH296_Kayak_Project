@@ -1,4 +1,4 @@
-function [g1_unit, thetac, useG1AsGlobalVel] = maxResponseFinder1(r1_pos, r2_pos, r3_pos, sensorResponses, thetac)
+function [g1_unit, thetac, useG1AsGlobalVel] = maxResponseFinder(r1_pos, r2_pos, r3_pos, sensorResponses, thetac)
     useG1AsGlobalVel = 0; %false
     vectorMagnitudes = [getMagnitude(sensorResponses(1,:)), getMagnitude(sensorResponses(2,:)), getMagnitude(sensorResponses(3,:))];
     
@@ -7,6 +7,6 @@ function [g1_unit, thetac, useG1AsGlobalVel] = maxResponseFinder1(r1_pos, r2_pos
     R3 = [r3_pos(1); r3_pos(2); vectorMagnitudes(3)];
     
     %Gradient calcs 
-    g1 = -grad_calc(R1, R2, R3);
+    g1 = grad_calc(R1, R2, R3);
     g1_unit = g1/norm(g1);
 end

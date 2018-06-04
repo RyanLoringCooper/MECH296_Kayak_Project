@@ -1,4 +1,4 @@
-function [g1_unit, desiredThetac, useG1AsGlobalVel] = sourceTrenchFollower(r1_pos, r2_pos, r3_pos, sensorResponses, thetac)
+function [g1_unit, desiredThetac, useG1AsGlobalVel] = doubleSourceTrenchAscender(r1_pos, r2_pos, r3_pos, sensorResponses, thetac)
     useG1AsGlobalVel = 1; %true
     clusterVars = fwd_kin([r1_pos; r2_pos; r3_pos]);
     vectorMagnitudes = [getMagnitude(sensorResponses(1,:)), getMagnitude(sensorResponses(2,:)), getMagnitude(sensorResponses(3,:))];
