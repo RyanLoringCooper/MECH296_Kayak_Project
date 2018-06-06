@@ -12,19 +12,18 @@ function [g1_unit, thetac, useG1AsGlobalVel] = contourFollower(r1_pos, r2_pos, r
     
     % From Robert M scalar field primitive paper
     % bcf = bgrad + d{sgn(Zdes - Zc)*min[Kct*abs(Zdes - Zc),pi/2 - (pi/2)}
-    % Let's use d = 1 for CW direction follower for now
     
     % Some parameters to set up
     % TODO: Need to find what is the range of value for Zdes and Kct
-    Zdes = 10; %Desired contour level to follow. Defined it here for now.
-    Kct = 0.1; %Some gain for the cluster to stay on the contour. 
+    Zdes = 0.5; %Desired contour level to follow. Defined it here for now.
+    Kct = 20; %Some gain for the cluster to stay on the contour. 
     d =1; %Contour follower direction: d=1 is CW and d = -1 is CCW
-    Zc = R1(3); %Should be value at cluster origin. But let's assume the cluster is small so that we can use scalar value from robot 1 for now
+    Zc = (R1(3)+R2(3)+R3(3))/3; 
     
     bgrad = atan2(g1_unit_tmp(2), g1_unit_tmp(1)); %Convert g1_unit to actual angle (bearing)
     bcf = bgrad + d*(sign(Zdes - Zc)*min(Kct*abs(Zdes-Zc),pi/2) - pi/2); %Calculate bearing for contour follower
     
     % convert back to unit vector so that we are consistent
-    g1_unit = [cos(bcf);sin(bcf)];
+    g1_unit = [cos(bcf);sin(bcf);0];
     
 end
