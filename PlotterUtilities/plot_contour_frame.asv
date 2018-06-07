@@ -37,20 +37,14 @@ size_y = length(y);
 m = u.^2+v.^2;
 Z = sqrt(m);
 figure1 = figure;
-contour(x,y,Z,40)
-colorbar
-hold on;
+contour(x,y,Z,60)
 
-r1Plots = [interp1(Time, r1_x, time);interp1(Time, r1_y, time)];
-r2Plots = [interp1(Time, r2_x, time);interp1(Time, r2_y, time)];
-r3Plots = [interp1(Time, r3_x, time);interp1(Time, r3_y, time)];
-plot(r1Plots(1,:),r1Plots(2,:),'ro')
-plot(r2Plots(1,:),r2Plots(2,:),'go')
-plot(r3Plots(1,:),r3Plots(2,:),'bo')
-
-figure2 = figure;
 contour3(x,y,Z,60);
-colorbar
+
+
+% figure;
+% v = [-100:5:100];
+% contour(x,y,Z,v);
 hold on
 
 r1Plots = [interp1(Time, r1_x, time);interp1(Time, r1_y, time)];

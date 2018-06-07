@@ -1,4 +1,4 @@
-function [ ] = plot_path( cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
+function [ ] = plot_path(cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
 %PLOT_PATH Plots cluster path on contour
 %   Superimposes the path the robots took onto a 2D contour map.
 %   'width' indicates the range to be plotted, 'resolution' is the time
