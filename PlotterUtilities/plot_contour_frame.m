@@ -36,58 +36,29 @@ size_y = length(y);
 
 m = u.^2+v.^2;
 Z = sqrt(m);
-figure1 = figure;
+
+%%
+%  Animation
+n = length(r1_x);
+for i = 1:n
 contour(x,y,Z,40)
 colorbar
 hold on;
-
-r1Plots = [interp1(Time, r1_x, time);interp1(Time, r1_y, time)];
-r2Plots = [interp1(Time, r2_x, time);interp1(Time, r2_y, time)];
-r3Plots = [interp1(Time, r3_x, time);interp1(Time, r3_y, time)];
-plot(r1Plots(1,:),r1Plots(2,:),'ro')
-plot(r2Plots(1,:),r2Plots(2,:),'go')
-plot(r3Plots(1,:),r3Plots(2,:),'bo')
-
-figure2 = figure;
-contour3(x,y,Z,60);
-colorbar
-hold on
-
-r1Plots = [interp1(Time, r1_x, time);interp1(Time, r1_y, time)];
-r2Plots = [interp1(Time, r2_x, time);interp1(Time, r2_y, time)];
-r3Plots = [interp1(Time, r3_x, time);interp1(Time, r3_y, time)];
-%plot(interp1(data.Time, data.Data(:,10), time),interp1(data.Time, data.Data(:,9), time),'kx')
-plot(r1Plots(1,:),r1Plots(2,:),'ro')
-plot(r2Plots(1,:),r2Plots(2,:),'go')
-plot(r3Plots(1,:),r3Plots(2,:),'bo')
-
-%plot(data.Data(:,9),data.Data(:,10),'kx')
-%plot(data.Data(:,13),data.Data(:,14),'ro')
-%plot(data.Data(:,15),data.Data(:,16),'go')
-%plot(data.Data(:,17),data.Data(:,18),'bo')
-%plot(interp1(data.Time, data.Data(:,9), time),interp1(data.Time, data.Data(:,10), time),'kx')
-%plot(interp1(data.Time, data.Data(:,13), time),interp1(data.Time, data.Data(:,14), time),'ro')
-%plot(interp1(data.Time, data.Data(:,15), time),interp1(data.Time, data.Data(:,16), time),'go')
-%plot(interp1(data.Time, data.Data(:,17), time),interp1(data.Time, data.Data(:,18), time),'bo')
-
-% xc = interp1(data.Time, data.Data(:,9), time) - interp1(data.Time, data.Data(:,6), time).*time;
-% yc = interp1(data.Time, data.Data(:,10), time) - interp1(data.Time, data.Data(:,5), time).*time;
-% plot(yc, xc, 'kx');
-
-% plot(interp1(data.Time, data.Data(:,14), time)- interp1(data.Time, data.Data(:,5), time).*time,interp1(data.Time, data.Data(:,13),time) - interp1(data.Time, data.Data(:,6), time).*time,'Marker','o','Color',color, 'LineStyle', 'none')
-% plot(interp1(data.Time, data.Data(:,16), time)- interp1(data.Time, data.Data(:,5), time).*time,interp1(data.Time, data.Data(:,15),time) - interp1(data.Time, data.Data(:,6), time).*time,'Marker','o','Color',color, 'LineStyle', 'none')
-% plot(interp1(data.Time, data.Data(:,18), time)- interp1(data.Time, data.Data(:,5), time).*time,interp1(data.Time, data.Data(:,17),time) - interp1(data.Time, data.Data(:,6), time).*time,'Marker','o','Color',color, 'LineStyle', 'none')
-
-% plot(interp1(data.Time, data.Data(:,14), time(1:250))- interp1(data.Time, data.Data(:,5), time(1:250)).*time(1:250),interp1(data.Time, data.Data(:,13),time(1:250)) - interp1(data.Time, data.Data(:,6), time(1:250)).*time(1:250),'Marker','o','Color',color, 'LineStyle', 'none')
-% plot(interp1(data.Time, data.Data(:,16), time(1:250))- interp1(data.Time, data.Data(:,5), time(1:250)).*time(1:250),interp1(data.Time, data.Data(:,15),time(1:250)) - interp1(data.Time, data.Data(:,6), time(1:250)).*time(1:250),'Marker','o','Color',color, 'LineStyle', 'none')
-% plot(interp1(data.Time, data.Data(:,18), time(1:250))- interp1(data.Time, data.Data(:,5), time(1:250)).*time(1:250),interp1(data.Time, data.Data(:,17),time(1:250)) - interp1(data.Time, data.Data(:,6), time(1:250)).*time(1:250),'Marker','o','Color',color, 'LineStyle', 'none')
-
-
+plot(r1_x(i),r1_y(i),'ro');
+plot(r2_x(i),r2_y(i),'go');
+plot(r3_x(i),r3_y(i),'bo');
 xlabel('Y');
 ylabel('X');
 axis square
+F(i) = getframe;
+
 hold off
+end
+%movie(F)
 
-
+% % % figure2 = figure;
+% % % contour3(x,y,Z,60);
+% % % colorbar
+% % % hold on
 end
 
