@@ -25,31 +25,50 @@ x = xmin-res:res:xmax+res;
 y = ymin-res:res:ymax+res;
 
 [X,Y] = meshgrid(x,y);
-field_shift = [0 0 0 0];
+%fieldGrapher(xmin-res, xmax+res, ymin-res, ymax+res, fieldGenerator, false, plotRes);
+
+n = length(r1_x);
+for i = 1:n
 fieldGrapher(xmin-res, xmax+res, ymin-res, ymax+res, fieldGenerator, true, plotRes);
-
-v = [-100:5:100];
-
-%figure;
-%contour(x,y,Z, v);
-hold on
-r1Plots = [interp1(Time, r1_x, time);interp1(Time, r1_y, time)];
-r2Plots = [interp1(Time, r2_x, time);interp1(Time, r2_y, time)];
-r3Plots = [interp1(Time, r3_x, time);interp1(Time, r3_y, time)];
-%plot(interp1(data.Time, data.Data(:,10), time),interp1(data.Time, data.Data(:,9), time),'kx')
-plot(r1Plots(1,:),r1Plots(2,:),'ro')
-plot(r2Plots(1,:),r2Plots(2,:),'go')
-plot(r3Plots(1,:),r3Plots(2,:),'bo')
-sizeofPlots = size(r1Plots);
-for i = 1:sizeofPlots(2)
-    line([r1Plots(1,i), r2Plots(1,i)], [r1Plots(2,i), r2Plots(2,i)], 'Color', [.25,.25,.25]);
-    line([r1Plots(1,i), r3Plots(1,i)], [r1Plots(2,i), r3Plots(2,i)], 'Color', [.25,.25,.25]);
+    hold on;
+plot(r1_x(i),r1_y(i),'ro');
+plot(r2_x(i),r2_y(i),'go');
+plot(r3_x(i),r3_y(i),'bo');
+    set(gcf,'visible','on');
+    xlabel('Y');
+    ylabel('X');
+    axis square
+F(i) = getframe(gcf);
+    clf
+    hold off
 end
 
-xlabel('X (Meters)');
-ylabel('Y (Meters)');
-axis square
-%hold off
+video = VideoWriter([pwd, '/SimulationVideos/SourceVectorField.avi'],'Motion JPEG AVI');
+video.FrameRate = 5;
+open(video)
+writeVideo(video, F);
+close(video);
+
+% v = [-100:5:100];
+% 
+% hold on
+% r1Plots = [interp1(Time, r1_x, time);interp1(Time, r1_y, time)];
+% r2Plots = [interp1(Time, r2_x, time);interp1(Time, r2_y, time)];
+% r3Plots = [interp1(Time, r3_x, time);interp1(Time, r3_y, time)];
+% %plot(interp1(data.Time, data.Data(:,10), time),interp1(data.Time, data.Data(:,9), time),'kx')
+% plot(r1Plots(1,:),r1Plots(2,:),'ro')
+% plot(r2Plots(1,:),r2Plots(2,:),'go')
+% plot(r3Plots(1,:),r3Plots(2,:),'bo')
+% sizeofPlots = size(r1Plots);
+% for i = 1:sizeofPlots(2)
+%     line([r1Plots(1,i), r2Plots(1,i)], [r1Plots(2,i), r2Plots(2,i)], 'Color', [.25,.25,.25]);
+%     line([r1Plots(1,i), r3Plots(1,i)], [r1Plots(2,i), r3Plots(2,i)], 'Color', [.25,.25,.25]);
+% end
+% 
+% xlabel('X (Meters)');
+% ylabel('Y (Meters)');
+% axis square
+% %hold off
 
 
 end

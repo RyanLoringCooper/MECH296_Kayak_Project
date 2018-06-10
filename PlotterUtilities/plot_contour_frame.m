@@ -39,33 +39,45 @@ Z = sqrt(m);
 
 %%
 %  Animation
-n = length(r1_x);
-
-
-for i = 1:n
-    contour(x,y,Z,30)
-    colorbar
-    hold on;
-    plot(r1_x(i),r1_y(i),'ro');
-    plot(r2_x(i),r2_y(i),'go');
-    plot(r3_x(i),r3_y(i),'bo');
-    set(gcf,'visible','on');
+% n = length(r1_x);
+% 
+% 
+% for i = 1:n
+%     contour(x,y,Z,30)
+%       colorbar
+%     hold on;
+%     plot(r1_x(i),r1_y(i),'ro');
+%     plot(r2_x(i),r2_y(i),'go');
+%     plot(r3_x(i),r3_y(i),'bo');
+    %     set(gcf,'visible','on');
+    %     xlabel('Y');
+    %     ylabel('X');
+    %     axis square
+%     F(i) = getframe(gcf);
+%     clf
+%     hold off
+% end
+% 
+% % video = VideoWriter('DoubleSource.avi','Motion JPEG AVI');
+% % video.FrameRate = 5;
+% % open(video)
+% % writeVideo(video, F);
+% % close(video);
+%%
+%Gray Scale 3D Contour Plot
+contour3(x,y,Z,30,'k');
+hold on
+surf(x,y,Z,'EdgeColor','none','FaceAlpha',0.5);
+    c = gray(30);
+    c = flipud(c);
+    colormap(c);
+    shading interp;
     xlabel('Y');
     ylabel('X');
+    zlabel('magnitude');
+    grid on
     axis square
-    F(i) = getframe(gcf);
-    clf
-    hold off
-end
+saveas(gcf,[pwd, '/SimulationImages/SourceWithFlow3DContour.png'])
 
-video = VideoWriter('DoubleSource.avi','Motion JPEG AVI');
-video.FrameRate = 5;
-open(video)
-writeVideo(video, F);
-close(video);
-% % % figure2 = figure;
-% % % contour3(x,y,Z,60);
-% % % colorbar
-% % % hold on
 end
 
