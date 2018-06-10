@@ -40,22 +40,29 @@ Z = sqrt(m);
 %%
 %  Animation
 n = length(r1_x);
+
+
 for i = 1:n
-contour(x,y,Z,40)
-colorbar
-hold on;
-plot(r1_x(i),r1_y(i),'ro');
-plot(r2_x(i),r2_y(i),'go');
-plot(r3_x(i),r3_y(i),'bo');
-xlabel('Y');
-ylabel('X');
-axis square
-F(i) = getframe;
-
-hold off
+    contour(x,y,Z,30)
+    colorbar
+    hold on;
+    plot(r1_x(i),r1_y(i),'ro');
+    plot(r2_x(i),r2_y(i),'go');
+    plot(r3_x(i),r3_y(i),'bo');
+    set(gcf,'visible','on');
+    xlabel('Y');
+    ylabel('X');
+    axis square
+    F(i) = getframe(gcf);
+    clf
+    hold off
 end
-%movie(F)
 
+video = VideoWriter('DoubleSource.avi','Motion JPEG AVI');
+video.FrameRate = 5;
+open(video)
+writeVideo(video, F);
+close(video);
 % % % figure2 = figure;
 % % % contour3(x,y,Z,60);
 % % % colorbar

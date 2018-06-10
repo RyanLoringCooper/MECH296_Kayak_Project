@@ -11,4 +11,4 @@ vector_field_resolution = 1;
 %plot_path(ClusterStateSpaceTimeSeries, path_resolution, width, fieldGenerator, vector_field_resolution);
 
 
-plot_contour_frame(ClusterStateSpaceTimeSeries, path_resolution, width, fieldGenerator, vector_field_resolution)
+plot_contour_frame(ClusterStateSpaceTimeSeries, path_resolution, width, fieldGenerator, vector_field_resolution);
