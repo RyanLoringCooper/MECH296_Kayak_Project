@@ -15,8 +15,8 @@ function [g1_unit, thetac, useG1AsGlobalVel] = contourFollower(r1_pos, r2_pos, r
     
     % Some parameters to set up
     % TODO: Need to find what is the range of value for Zdes and Kct
-    Zdes = 0.5; %Desired contour level to follow. Defined it here for now.
-    Kct = 20; %Some gain for the cluster to stay on the contour. 
+    Zdes = 0.48; %Desired contour level to follow. Defined it here for now.
+    Kct = 60; %Some gain for the cluster to stay on the contour. 
     d =1; %Contour follower direction: d=1 is CW and d = -1 is CCW
     Zc = (R1(3)+R2(3)+R3(3))/3; 
     

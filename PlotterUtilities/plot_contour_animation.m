@@ -1,4 +1,4 @@
-function [ ] = plot_contour_animation(cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
+function [ ] = plot_contour_animation(cluster_space_time_series, resolution, width, fieldGenerator, algSolver, plotRes)
 %PLOT_PATH Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -63,7 +63,7 @@ for i = 1:n
     clf
     hold off
 end
-fname = sprintf('SimulationVideos/%s_2D_Contour_animation.png', fieldGenerator);
+fname = sprintf('SimulationVideos/%s_%s_2D_Contour_animation.mp3', fieldGenerator, algSolver);
 video = VideoWriter(fname);
 video.FrameRate = 5;
 open(video)

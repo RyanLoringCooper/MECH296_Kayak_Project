@@ -1,4 +1,4 @@
-function [ ] = plot_path( cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
+function [ ] = plot_path( cluster_space_time_series, resolution, width, fieldGenerator, algSolver, plotRes)
 %PLOT_PATH Plots cluster path on contour
 %   Superimposes the path the robots took onto a 2D contour map.
 %   'width' indicates the range to be plotted, 'resolution' is the time
@@ -50,7 +50,7 @@ xlabel('X (Meters)');
 ylabel('Y (Meters)');
 axis square
 %hold off
-fname = sprintf('/SimulationImages/%s_VectorField.png', fieldGenerator);
+fname = sprintf('/SimulationImages/%s_%s_VectorFieldPath.png', fieldGenerator, algSolver);
 saveas(gcf,[pwd, fname])
 
 end

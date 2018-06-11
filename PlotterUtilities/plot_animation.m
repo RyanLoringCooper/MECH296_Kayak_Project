@@ -42,8 +42,8 @@ F(i) = getframe(gcf);
     clf
     hold off
 end
-
-video = VideoWriter([pwd, '/SimulationVideos/SourceVectorField.mp3']);
+fname = sprintf('SimulationVideos/%s_%s_2D_VectorField_animation.mp3', fieldGenerator, algSolver);
+video = VideoWriter(fname);
 video.FrameRate = 5;
 open(video)
 writeVideo(video, F);
