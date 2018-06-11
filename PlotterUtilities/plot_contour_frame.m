@@ -36,6 +36,15 @@ size_y = length(y);
 
 m = u.^2+v.^2;
 Z = sqrt(m);
+size_z = size(Z);
+ZThreshold = 1.05;
+for i = 1:1:size_z(1)
+    for j = 1:1:size_z(2)
+        if Z(i, j) >= ZThreshold
+            Z(i, j) = ZThreshold;
+        end
+    end
+end
 
 %%
 %  Animation
@@ -65,12 +74,12 @@ Z = sqrt(m);
 % % close(video);
 %%
 %Gray Scale 3D Contour Plot
-contour3(x,y,Z,30,'k');
+contour3(x,y,Z,100,'k');
 hold on
-surf(x,y,Z,'EdgeColor','none','FaceAlpha',0.5);
-    c = gray(30);
-    c = flipud(c);
-    colormap(c);
+surf(x,y,Z,'EdgeColor','none','FaceAlpha',1);
+    %c = gray(50);
+%     c = flipud(c);
+%     colormap(c);
     shading interp;
     xlabel('Y');
     ylabel('X');
