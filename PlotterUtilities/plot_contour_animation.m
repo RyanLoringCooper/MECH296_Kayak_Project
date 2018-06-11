@@ -1,4 +1,4 @@
-function [ ] = plot_contour_frame(cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
+function [ ] = plot_contour_animation(cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
 %PLOT_PATH Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -46,17 +46,27 @@ for i = 1:1:size_z(1)
     end
 end
 
-contour(x,y,Z,100,'k');
-    colorbar
+%Contour Animation
+n = length(r1_x);
+for i = 1:n
+    contour(x,y,Z,10);
+        colorbar
     hold on;
-plot(r1_x(i),r1_y(i),'ro');
-plot(r2_x(i),r2_y(i),'go');
-plot(r3_x(i),r3_y(i),'bo');
-    set(gcf,'visible','on');
-    xlabel('Y');
-    ylabel('X');
-    axis square
-fname = sprintf('/SimulationImages/%s_2D_Contour.png', fieldGenerator);
-saveas(gcf,[pwd, fname])
+    plot(r1_x(i),r1_y(i),'ro');
+    plot(r2_x(i),r2_y(i),'go');
+    plot(r3_x(i),r3_y(i),'bo');
+        set(gcf,'visible','on');
+        xlabel('Y');
+        ylabel('X');
+        axis square
+    F(i) = getframe(gcf);
+    clf
+    hold off
 end
-
+fname = sprintf('/SimulationVideos/%s_2D_Contour_animation.png', fieldGenerator);
+video = VideoWriter(fname);
+video.FrameRate = 5;
+open(video)
+writeVideo(video, F);
+close(video);
+end

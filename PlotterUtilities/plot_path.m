@@ -50,6 +50,7 @@ xlabel('X (Meters)');
 ylabel('Y (Meters)');
 axis square
 %hold off
-
+fname = sprintf('/SimulationImages/%s_VectorField.png', fieldGenerator);
+saveas(gcf,[pwd, fname])
 
 end

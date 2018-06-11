@@ -1,4 +1,4 @@
-function [ ] = plot_contour_frame(cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
+function [ ] = plot_contour_frame_3D(cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
 %PLOT_PATH Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -46,17 +46,19 @@ for i = 1:1:size_z(1)
     end
 end
 
-contour(x,y,Z,100,'k');
-    colorbar
-    hold on;
-plot(r1_x(i),r1_y(i),'ro');
-plot(r2_x(i),r2_y(i),'go');
-plot(r3_x(i),r3_y(i),'bo');
-    set(gcf,'visible','on');
+%3D Contour Plot
+contour3(x,y,Z,100,'k');
+hold on
+surf(x,y,Z,'EdgeColor','none','FaceAlpha',1);
+%    c = gray(50);
+%    c = flipud(c);
+%    colormap(c);
+    shading interp;
     xlabel('Y');
     ylabel('X');
+    zlabel('magnitude');
+    grid on
     axis square
-fname = sprintf('/SimulationImages/%s_2D_Contour.png', fieldGenerator);
+fname = sprintf('/SimulationImages/%s_3D_Contour.png', fieldGenerator);
 saveas(gcf,[pwd, fname])
 end
-

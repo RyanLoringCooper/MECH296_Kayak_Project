@@ -57,6 +57,6 @@ plot(r3_x(i),r3_y(i),'bo');
     ylabel('X');
     axis square
 fname = sprintf('/SimulationImages/%s_2D_Contour.png', fieldGenerator);
-saveas(gcf,[pwd, fname])
+saveas(gcf,[pwd, '/SimulationImages/',sprintf('fieldGenerator'),'_2D_Contour.png'])
 end
 

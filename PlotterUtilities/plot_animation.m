@@ -1,4 +1,4 @@
-function [ ] = plot_path(cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
+function [ ] = plot_animation(cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
 %PLOT_PATH Plots cluster path on contour
 %   Superimposes the path the robots took onto a 2D contour map.
 %   'width' indicates the range to be plotted, 'resolution' is the time
@@ -43,7 +43,7 @@ F(i) = getframe(gcf);
     hold off
 end
 
-video = VideoWriter([pwd, '/SimulationVideos/SourceVectorField.avi'],'Motion JPEG AVI');
+video = VideoWriter([pwd, '/SimulationVideos/SourceVectorField.mp3']);
 video.FrameRate = 5;
 open(video)
 writeVideo(video, F);
