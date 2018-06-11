@@ -1,7 +1,7 @@
 clear; clc;
 sim('DynamicSimulator');
 path_resolution = 3;
-fieldGenerator = 'vortexWithSink'; %this must match the corresponding fieldGenerator box in DynamicSimulator.slx
+fieldGenerator = 'doubleSource'; %this must match the corresponding fieldGenerator box in DynamicSimulator.slx
 width = 100;
 vector_field_resolution = 1;
 

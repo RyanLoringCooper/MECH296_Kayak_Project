@@ -63,7 +63,7 @@ for i = 1:n
     clf
     hold off
 end
-fname = sprintf('/SimulationVideos/%s_2D_Contour_animation.png', fieldGenerator);
+fname = sprintf('SimulationVideos/%s_2D_Contour_animation.png', fieldGenerator);
 video = VideoWriter(fname);
 video.FrameRate = 5;
 open(video)
