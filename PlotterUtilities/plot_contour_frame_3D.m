@@ -1,4 +1,4 @@
-function [ ] = plot_contour_frame_3D(cluster_space_time_series, resolution, width, fieldGenerator, algSolver, plotRes)
+function [ ] = plot_contour_frame_3D(cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
 %PLOT_PATH Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -59,6 +59,6 @@ surf(x,y,Z,'EdgeColor','none','FaceAlpha',1);
     zlabel('magnitude');
     grid on
     axis square
-fname = sprintf('/SimulationImages/%s_%s_3D_Contour.png', fieldGenerator, algSolver);
+fname = sprintf('/SimulationImages/%s_3D_Contour.png', fieldGenerator);
 saveas(gcf,[pwd, fname])
 end

@@ -1,4 +1,4 @@
-function [ ] = plot_contour_frame(cluster_space_time_series, resolution, width, fieldGenerator, algSolver, plotRes)
+function [ ] = plot_contour_frame(cluster_space_time_series, resolution, width, fieldGenerator, plotRes)
 %PLOT_PATH Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -56,7 +56,7 @@ plot(r3_x(i),r3_y(i),'bo');
     xlabel('Y');
     ylabel('X');
     axis square
-fname = sprintf('/SimulationImages/%s_%s_2D_Contour.png', fieldGenerator,  algSolver);
+fname = sprintf('/SimulationImages/%s_2D_Contour.png', fieldGenerator);
 saveas(gcf,[pwd, fname])
 end
 
